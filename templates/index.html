@@ -1,28 +1,9 @@
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
-
-<style>
-    * {
-        font-family: "Rubik", "sans-serif";
-    }
-
-    div {
-        text-align: center;
-        margin-top: 50px;
-    }
-
-    h1 {
-        color: red;
-        font-size: 40pt;
-    }
-
-    p {
-        font-size: 24pt;
-    }
-</style>
-
-<div>
-    <h1>Welcome!</h1><br>
-	<p> Enter User Name to find the recommandation {{user_input}} <p>
-    <p>Product Recommandated for the user {{b}} </p>
-</div>
+<form action="https://first-sample-webapp.herokuapp.com/" method="GET">
+  <div>
+    <label for="token">Enter  user name</label>
+    <input name="token" id="token" value="">
+  </div>
+  <div>
+    <button>Submit</button>
+  </div>
+</form>
