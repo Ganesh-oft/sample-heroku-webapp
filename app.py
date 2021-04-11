@@ -1,25 +1,26 @@
-from flask import Flask, render_template
+from flask import Flask
+from flask import request
+
+from model import *
 
 app = Flask(__name__)
 
-@app.route("/")
-def index():
-    
-    # Load current count
-    f = open("count.txt", "r")
-    count = int(f.read())
-    f.close()
+version=10
 
-    # Increment the count
-    count += 1
+@app.before_first_request
+def before_first_request():
+    init()
 
-    # Overwrite the count
-    f = open("count.txt", "w")
-    f.write(str(count))
-    f.close()
-
-    # Render HTML with count variable
-    return render_template("index.html", count=count)
-
+@app.route('/recommend', methods=['GET'])
+def recommend():
+	token = request.args.get('token')
+	print(f"LOG: Input token is {token}")
+	return get_recommendations(token)
+	
+@app.route('/health', methods=['GET'])
+def healthcheck():
+	print(f"LOG: Version is {version}")
+	return f"Version is {version}"
+	
 if __name__ == "__main__":
     app.run()
